@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{2BF9F71F-3FD0-465A-C282-CF036D8AC98D}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Singleton.cs">
+    <Files>
+      <File FileName="Assets/Move.cs" Line="14" Column="3" />
+      <File FileName="Assets/Scripts/Singleton.cs" Line="41" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
