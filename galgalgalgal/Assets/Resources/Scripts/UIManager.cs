@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject settingUI;
+    //Canvas
+    public GameObject settingCanvas;
     public GameObject readyCanvas;
     public GameObject playingCanvas;
     public GameObject doneCanvas;
+
+    //UI
+    public GameObject user_hardCore;
+    public GameObject user_newby;
+    public GameObject user_rich;
+    public GameObject gm;
 
     public GameObject inventoryImg;
     public GameObject inventorySet;
@@ -16,16 +23,16 @@ public class UIManager : MonoBehaviour
 
     public void SettingActiveOn()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.STOP;
+        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.STOP;
         Time.timeScale = 0.0f;
-        settingUI.SetActive(true);
+        settingCanvas.SetActive(true);
     }
 
     public void SettingActiveOff()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
+        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
         Time.timeScale = 1.0f;
-        settingUI.SetActive(false);
+        settingCanvas.SetActive(false);
     }
 
     public void ActiveCanvas(GameObject canvas)
@@ -52,15 +59,15 @@ public class UIManager : MonoBehaviour
 
     private void InventoryActiveOn()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.STOP;
+        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.STOP;
         Time.timeScale = 0.0f;
         isInventoryActive = true;
         inventorySet.SetActive(true);
     }
     private void InventoryActiveOff()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
-        Time.timeScale = 0.0f;
+        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
+        Time.timeScale = 1.0f;
         isInventoryActive = false;
         inventorySet.SetActive(false);
     }

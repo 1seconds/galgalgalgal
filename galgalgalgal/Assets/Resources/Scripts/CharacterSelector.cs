@@ -8,6 +8,6 @@ public class CharacterSelector : MonoBehaviour
 
     public void Select()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<SelectPlayer>().SelectSure(playerState);
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SelectSure(playerState);
     }
 }

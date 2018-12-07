@@ -1167,7 +1167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 251042454}
   m_Layer: 5
-  m_Name: GM
+  m_Name: GM_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6114,7 +6114,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086732623}
-  - component: {fileID: 1086732622}
   - component: {fileID: 1086732624}
   - component: {fileID: 1086732625}
   m_Layer: 0
@@ -6124,22 +6123,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1086732622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114612655517307248, guid: 62614cb2568ba3246a62918ff35df46d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1086732621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ff8943143ac024dbb99178a0bf3f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  user_hardCore: {fileID: 99683826}
-  user_newby: {fileID: 786070726}
-  user_rich: {fileID: 453531084}
-  gm: {fileID: 251042453}
 --- !u!4 &1086732623
 Transform:
   m_ObjectHideFlags: 0
@@ -6165,10 +6148,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79fd76c882695f449bb8093bac31f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingUI: {fileID: 1144260699}
+  settingCanvas: {fileID: 1144260699}
   readyCanvas: {fileID: 1132441553}
   playingCanvas: {fileID: 739186412}
   doneCanvas: {fileID: 893536131}
+  user_hardCore: {fileID: 99683826}
+  user_newby: {fileID: 786070726}
+  user_rich: {fileID: 453531084}
+  gm: {fileID: 251042453}
   inventoryImg: {fileID: 358140656}
   inventorySet: {fileID: 284643547}
 --- !u!114 &1086732625
@@ -6434,7 +6421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144260700}
   m_Layer: 5
-  m_Name: SettingWindow
+  m_Name: SettingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
