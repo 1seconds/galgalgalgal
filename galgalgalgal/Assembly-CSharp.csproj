@@ -65,8 +65,11 @@
     <Compile Include="Assets\Resources\Scripts\AnyKeyInput.cs" />
     <Compile Include="Assets\Resources\Scripts\Blink.cs" />
     <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
+    <Compile Include="Assets\Resources\Scripts\Finish.cs" />
+    <Compile Include="Assets\Resources\Scripts\GameDone.cs" />
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
+    <Compile Include="Assets\Resources\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSet.cs" />
     <Compile Include="Assets\Resources\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Assets\Scripts\Monster\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Monster\Path.cs" />
     <Compile Include="Assets\Scripts\Monster\Run.cs" />
+    <Compile Include="Assets\Scripts\Player\AttakSpace.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBody.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerFoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire3.cs" />
     <Compile Include="Assets\Scripts\Trap\FireTrap.cs" />
+    <Compile Include="Assets\Scripts\Trap\FireTrap_Rich.cs" />
     <None Include="Assets\Colorblind Effect\Assets\Shaders\Colorblind.shader" />
     <None Include="Assets\Colorblind Effect\Documentation\ReadMe.txt" />
     <Reference Include="UnityEditor.StandardEvents">

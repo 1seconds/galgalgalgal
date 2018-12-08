@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114932521748845648}
   m_Layer: 0
   m_Name: 'GreenSkeletonRoaming '
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   bleft: 1
   viewDistance: {x: 0, y: 0}
   bTrace: 0
+  monsterType: 0
   speed: 10
 --- !u!212 &212456230162154398
 SpriteRenderer:
@@ -147,7 +148,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 221de1a3f295a429ebd4334896cd2c09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

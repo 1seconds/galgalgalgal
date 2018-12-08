@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61419236321036422}
   - component: {fileID: 114129322281615846}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: Player_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487308683959910}
   - component: {fileID: 61059901278158918}
+  - component: {fileID: 114519899554749484}
   m_Layer: 0
   m_Name: AttackSpace
   m_TagString: Untagged
@@ -54,9 +55,10 @@ GameObject:
   - component: {fileID: 4043763676624876}
   - component: {fileID: 50670686251483432}
   - component: {fileID: 114201000592005004}
+  - component: {fileID: 114121695557619320}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +76,7 @@ GameObject:
   - component: {fileID: 95801320940717150}
   - component: {fileID: 114636362802469356}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Player_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,8 +88,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812445439286148}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.55, y: 0.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.1, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4262795183508422}
@@ -164,7 +166,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.8, y: -0.7}
@@ -189,7 +191,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08, y: -1.47}
@@ -229,7 +231,7 @@ Animator:
   m_GameObject: {fileID: 1952029670637334}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: abb03c965b3722841b2d82415fee47ac, type: 2}
+  m_Controller: {fileID: 9100000, guid: 27b685e56b8b4154392ff25fe8cc9f81, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -238,6 +240,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114121695557619320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812445439286148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5835258dc0fea4198ae957a6edea99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spr:
+  - {fileID: 21300000, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
+  - {fileID: 21300002, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
+  - {fileID: 21300004, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
+  - {fileID: 21300006, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
+  map:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  changeEffectSpr:
+  - {fileID: 21300000, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
+  - {fileID: 21300002, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
+  - {fileID: 21300004, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
+  - {fileID: 21300006, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
+  currentPlayerState: 0
 --- !u!114 &114129322281615846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,14 +291,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   MamaximumSpeed: 2
-  JumpPower: 30
+  JumpPower: 300
   UpSpeed: 5
   Verti: 0
+  isAtkActivated: 0
   isKeydownUpDown: 0
-  isEnterSideTile: 0
   isEnterLadder: 0
   isJump: 0
   isPlayerDie: 0
+--- !u!114 &114519899554749484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566070496788918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ab5607f7687d4c8c38bcdd4ab10d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114636362802469356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +355,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: dfc3ad9c5e1148b47ae3ad63075c1080, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

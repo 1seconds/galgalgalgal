@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Wilberforce;
 
 public class GameManager : MonoBehaviour
@@ -10,13 +11,54 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
 
     private float time_;
+    private float time_2;
     public GameObject panel;
     private bool isTrigger = false;
 
     public GameObject tmpEffectPrefab;
     private GameObject tmpEffectObj;
 
-    private int cnt = 0;
+    public GameObject alphacaSet;
+    public GameObject alphaca;
+    public GameObject bolloon;
+
+    public Vector3 alphacaInitVec;
+    public Vector3 alphacaCenterVec;
+    public Vector3 alphacaFinishVec;
+
+    [HideInInspector] public Vector3 playerInitVec = new Vector3(-1.24f, -0.76f, 0);
+
+    IEnumerator AlphacaGo()
+    {
+        yield return new WaitForSeconds(22);
+        alphacaSet.SetActive(true);
+        alphaca.transform.localPosition = alphacaInitVec;
+        time_2 = 0;
+        while (true)
+        {
+            alphaca.transform.localPosition = Vector3.Lerp(alphacaInitVec, alphacaCenterVec, time_2);
+            yield return new WaitForEndOfFrame();
+            time_2 += (Time.deltaTime);
+            if (time_2 > 1f)
+                break;
+        }
+        bolloon.SetActive(true);
+        alphaca.transform.localPosition = alphacaCenterVec;
+        yield return new WaitForSeconds(1f);
+        bolloon.SetActive(false);
+        time_2 = 0;
+        while (true)
+        {
+            alphaca.transform.localPosition = Vector3.Lerp(alphacaCenterVec, alphacaFinishVec, time_2);
+            yield return new WaitForEndOfFrame();
+            time_2 += (Time.deltaTime);
+            if (time_2 > 1f)
+                break;
+        }
+        alphacaSet.SetActive(false);
+        alphaca.transform.localPosition = alphacaFinishVec;
+        StartCoroutine(AlphacaGo());
+    }
 
     public void Start()
     {
@@ -24,11 +66,14 @@ public class GameManager : MonoBehaviour
         uiManager = gameObject.GetComponent<UIManager>();
         StartCoroutine(FadeOut());
         ReadyGame();
+
+        StartCoroutine(AlphacaGo());
     }
 
     //게임준비
     public void ReadyGame()
     {
+        Time.timeScale = 1.0f;
         currentState = GAMESTATE.READY;
         uiManager.ActiveCanvas(uiManager.readyCanvas);
     }
@@ -71,6 +116,15 @@ public class GameManager : MonoBehaviour
     {
         currentState = GAMESTATE.DONE;
         gameObject.GetComponent<UIManager>().ActiveCanvas(gameObject.GetComponent<UIManager>().doneCanvas);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[8]);
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[9]);
+        StartCoroutine(DoneGameCor());
+    }
+
+    IEnumerator DoneGameCor()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Reset");
     }
 
     IEnumerator ScreenEffect()
@@ -92,27 +146,30 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ScreenEffect());
         }
         
+        //init
+        for(int i =0; i< GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map.Length; i++)
+            GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[i].SetActive(false);
+
         switch (playerState)
         {
             case PLAYER.HARDCOREUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.HARDCOREUSER;
-                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
+                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
-                
                 break;
             case PLAYER.RICHUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.RICHUSER;
-                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
+                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[1].SetActive(true);
                 break;
             case PLAYER.NEWBYUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.NEWBYUSER;
-                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
+                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[2].SetActive(true);
                 break;
             case PLAYER.GM:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.GM;
-                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
+                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[3].SetActive(true);
                 break;
         }
@@ -166,6 +223,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeEffectCor()
     {
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[1]);
         tmpEffectObj = Instantiate(tmpEffectPrefab);
         tmpEffectObj.transform.position = GameObject.FindWithTag("Player").transform.position;
 

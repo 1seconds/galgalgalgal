@@ -15,6 +15,7 @@ public class CharacterSelector : MonoBehaviour
 
     IEnumerator Twinkle(PLAYER playerState)
     {
+        SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[0]);
         time_ = 0;
         while (true)
         {

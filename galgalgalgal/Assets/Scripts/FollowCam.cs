@@ -48,6 +48,6 @@ public class FollowCam : MonoBehaviour
         float clampX = Mathf.Clamp(transform.position.x, -15f + camHalfWidth, 178.5f - camHalfWidth);
         float clampY = Mathf.Clamp(transform.position.y, -5.6f + camHalfHeight, 4.85f- camHalfHeight);
 
-        transform.position = new Vector3(clampX, clampY, transform.position.z);
+        transform.position = new Vector3(clampX, clampY + 2.35f, transform.position.z);
     }
 }

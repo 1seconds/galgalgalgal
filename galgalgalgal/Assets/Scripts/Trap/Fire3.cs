@@ -5,11 +5,6 @@ using UnityEngine;
 public class Fire3 : MonoBehaviour {
 
     public float fireSpeed = 10f;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,7 +16,7 @@ public class Fire3 : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("DeadZone"))
             Destroy(gameObject);
     }
 }

@@ -17,7 +17,7 @@ public class PathEditor : Editor
 
         if(GUILayout.Button("Add nodePositionsition"))
         {
-            Vector3 nodePositionsition = (mPath.nodePositions[mPath.nodePositions.Length - 1] + Vector3.right);
+            Vector3 nodePositionsition = (mPath.transform.position);
             float waitTime = 0f;
             ArrayUtility.Add(ref mPath.nodePositions, nodePositionsition);
             ArrayUtility.Add(ref mPath.waitTimes, waitTime);
