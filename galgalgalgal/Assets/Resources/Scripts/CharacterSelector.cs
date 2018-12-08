@@ -5,6 +5,8 @@ using UnityEngine;
 public class CharacterSelector : MonoBehaviour
 {
     public PLAYER playerState;
+    private float time_;
+    public float speed;
 
     public void Select()
     {
@@ -13,11 +15,15 @@ public class CharacterSelector : MonoBehaviour
 
     IEnumerator Twinkle()
     {
-        while(true)
+        time_ = 0;
+        while (true)
         {
-
+            time_ += Time.deltaTime;
+            gameObject.transform.eulerAngles += new Vector3(0, 0, time_ * time_ * speed);
+            yield return new WaitForEndOfFrame();
+            if (time_ > 3.0f)
+                break;
         }
-        yield return new WaitForSeconds(1f);
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SelectSure(playerState);
     }
 }
