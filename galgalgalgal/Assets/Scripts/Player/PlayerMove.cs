@@ -12,92 +12,103 @@ public class PlayerMove : MonoBehaviour {
     public bool isEnterSideTile = false;
     public bool isEnterLadder = false;
     public bool isJump = false;
+    public bool isPlayerDie = false;
     
 
     public void Update()
     {
-
-        //좌우이동
-        if (isEnterSideTile == false)
+        if (isPlayerDie != true)
         {
-            float h = Input.GetAxis("Horizontal");
-            if (h != 0)
+            //좌우이동
+            if (isEnterSideTile == false)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(MoveSpeed * h, 0, 0));
+                float h = Input.GetAxisRaw("Horizontal");
+                if (h != 0)
+                {
+                    if (h > 0)
+                        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    if (h < 0)
+                        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(MoveSpeed * h, 0, 0));
+                    //PlayerAnim_Run();
+                }
+                else if (h == 0)
+                {
+                    Invoke("HorizontalStop", 0.0f);
+                    //PlayerAnim_Idle();
+                }
             }
-            else if(h == 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Invoke("HorizontalStop", 0.0f);
+                //PlayerAnim_Attack();
             }
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
 
-        }
-
-        //방향키 위아래
-        float Verti = Input.GetAxisRaw("Vertical");
-        if(Verti != 0)
-        {
-            isKeydownUpDown = true;
-        }
-        else
-        {
-            isKeydownUpDown = false;
-        }
-
-        //사다리 타기
-        if (isEnterLadder == true)
-        {
-            
+            //방향키 위아래
+            float Verti = Input.GetAxisRaw("Vertical");
             if (Verti != 0)
             {
-                transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
+                isKeydownUpDown = true;
             }
-        }
-
-
-        //최고속도 제한
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > MamaximumSpeed)
-        {
-            Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
-            v.x = MamaximumSpeed;
-            gameObject.GetComponent<Rigidbody2D>().velocity = v;
-        }
-        else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -MamaximumSpeed)
-        {
-            Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
-            v.x = -MamaximumSpeed;
-            gameObject.GetComponent<Rigidbody2D>().velocity = v;
-        }
-
-
-
-        //점프
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.y ==0)
+            else
             {
-                if (isEnterLadder == false)
+                isKeydownUpDown = false;
+            }
+
+            //사다리 타기
+            if (isEnterLadder == true)
+            {
+                if (Verti != 0)
                 {
-                    isJump = true;
-                    gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, JumpPower, 0));
+                    //PlayerAnim_Ladder();
+                    transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
+                }
+            }
+
+
+            //최고속도 제한
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > MamaximumSpeed)
+            {
+                Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
+                v.x = MamaximumSpeed;
+                gameObject.GetComponent<Rigidbody2D>().velocity = v;
+            }
+            else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -MamaximumSpeed)
+            {
+                Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
+                v.x = -MamaximumSpeed;
+                gameObject.GetComponent<Rigidbody2D>().velocity = v;
+            }
+
+
+
+            //점프
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (gameObject.GetComponent<Rigidbody2D>().velocity.y == 0)
+                {
+                    if (isEnterLadder == false)
+                    {
+                        isJump = true;
+                        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, JumpPower, 0));
+                    }
                 }
             }
         }
-
-
-
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag=="Tile")
+        if(col.gameObject.tag=="Tile" || col.gameObject.tag=="Wall")
         {
             isJump = false;
         }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
+        if(col.gameObject.tag=="Fire" || col.gameObject.tag == "Arrow")//불에 닿아 죽음
+        {
+            isPlayerDie = true;
+            //PlayerAnim_Die();
+        }
         if(col.gameObject.tag=="Side")
         {
             isEnterSideTile = true;
@@ -127,6 +138,7 @@ public class PlayerMove : MonoBehaviour {
         if (col.gameObject.tag == "Ladder")
         {
             isEnterLadder = false;
+            //PlayerAnim_Idle();
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
     }
@@ -171,8 +183,12 @@ public class PlayerMove : MonoBehaviour {
     {
         gameObject.GetComponent<Animator>().SetInteger("state", 2);
     }
-    public void PlayerAnim_Die()
+    public void PlayerAnim_Ladder()
     {
         gameObject.GetComponent<Animator>().SetInteger("state", 3);
+    }
+    public void PlayerAnim_Die()
+    {
+        gameObject.GetComponent<Animator>().SetInteger("state", 4);
     }
 }

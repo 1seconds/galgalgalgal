@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Run : Move {
-
+    [HideInInspector]
     public float speed;
     Vector2 mMovement;
     public void LeftRun()

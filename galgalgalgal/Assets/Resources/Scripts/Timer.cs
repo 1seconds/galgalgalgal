@@ -12,10 +12,19 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         gameObject.GetComponent<Text>().text = "00 분 00 초";
-        StartCoroutine(CountingStart());
     }
 
-    IEnumerator CountingStart()
+    private void OnEnable()
+    {
+        CountingStart();
+    }
+
+    public void CountingStart()
+    {
+        StartCoroutine(CountingStartCor());
+    }
+
+    IEnumerator CountingStartCor()
     {
         yield return new WaitForSeconds(1f);
 
@@ -43,8 +52,6 @@ public class Timer : MonoBehaviour
             gameObject.GetComponent<Text>().text += currentSecond;
 
         gameObject.GetComponent<Text>().text += " 초";
-
-
-        StartCoroutine(CountingStart());
+        StartCoroutine(CountingStartCor());
     }
 }

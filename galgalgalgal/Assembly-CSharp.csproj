@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\AnyKeyInput.cs" />
+    <Compile Include="Assets\Resources\Scripts\Blink.cs" />
     <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
     <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\DisapearTile.cs" />
+    <Compile Include="Assets\Scripts\FollowCam.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\AttackAbility.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\BodyAttack.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\Bullet.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire1.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
+    <Compile Include="Assets\Scripts\Trap\Fire3.cs" />
     <Compile Include="Assets\Scripts\Trap\FireTrap.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/1seco/Desktop/giiitt/galgalgalgal/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

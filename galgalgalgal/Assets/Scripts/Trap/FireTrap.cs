@@ -5,60 +5,77 @@ using UnityEngine;
 public class FireTrap : MonoBehaviour {
 
     public GameObject fire;
-	void Start ()
+    float destroyDist = -10f;
+    GameObject fireBall;
+    GameObject SplitBall;
+    GameObject leftFire;
+    GameObject rightFire;
+    
+    public float SplitTime = 0.5f;
+    void Start ()
     {
-        StartCoroutine(SplitFire());
+        if (fire.name == "FireBall2")
+            StartCoroutine(SplitFire());
     }
-
-    // Update is called once per frame
-    void Update ()
-    {
-		
-	}
     IEnumerator FireShot()
     {
-        float DestroyCycle = 4f;
+        float randomCycle;
         while (true)
         {
-            GameObject fireBall = Instantiate(fire, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(DestroyCycle);
-            Destroy(fireBall);
+            randomCycle = Random.Range(0.4f, 1f);
+            fireBall = Instantiate(fire, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(randomCycle);
         }
     }
     IEnumerator SplitFire()
     {
         float ShotCycle = 1f;
-        float DestroyCycle = 10f;
-        float SplitTime = 0.5f;
+        float DestroyCycle = 0.5f;
+        float randRotate;
         while (true)
         {
             //직선으로 파이어볼 생성
-            GameObject fireBall = Instantiate(fire, transform.position, Quaternion.identity);
+            SplitBall = Instantiate(fire, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(SplitTime);
 
             //방향에 따른 파이어볼 생성
-            GameObject leftFire = Instantiate(fire);
+            leftFire = Instantiate(fire);
 
             //발사각을 계산
-            leftFire.transform.position = fireBall.transform.position;
+            randRotate = Random.Range(-30f, -1f);
+            leftFire.transform.position = SplitBall.transform.position;
             leftFire.transform.eulerAngles = fire.transform.eulerAngles;
-            leftFire.transform.eulerAngles += new Vector3(0, 0, -30);
-
-            //방향에 따른 파이어볼 생성
-            GameObject rightFire = Instantiate(fire);
+            leftFire.transform.eulerAngles += new Vector3(0, 0, randRotate);
+                //방향에 따른 파이어볼 생성
+            rightFire = Instantiate(fire);
 
             //발사각을 계산
-            rightFire.transform.position = fireBall.transform.position;
+            randRotate = Random.Range(1f, 30f);
+            rightFire.transform.position = SplitBall.transform.position;
             rightFire.transform.eulerAngles = fire.transform.eulerAngles;
-            rightFire.transform.eulerAngles += new Vector3(0, 0, 30);
+            rightFire.transform.eulerAngles += new Vector3(0, 0, randRotate);
 
             yield return new WaitForSeconds(DestroyCycle);
-            Destroy(fireBall);
+            Destroy(SplitBall);
             Destroy(leftFire);
             Destroy(rightFire);
 
             yield return new WaitForSeconds(ShotCycle);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Player")
+        {
+            if (fire.name == "FireBall1")
+                StartCoroutine(FireShot());
+        }
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            StopAllCoroutines();
+        }
+    }
 }

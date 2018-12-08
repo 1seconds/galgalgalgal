@@ -93,7 +93,6 @@ C:/Users/eltm3/Desktop/Dev/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.c
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Boo.Lang.Parser.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Boo.Lang.Compiler.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Unity.UNetWeaver.dll
-/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Unity.IvyParser.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Mono.Security.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Boo.Lang.PatternMatching.dll
@@ -245,11 +244,12 @@ C:/Users/eltm3/Desktop/Dev/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.c
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEngine.Analytics.dll.mdb
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
-/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll.mdb
-/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.xml
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/Unity.IvyParser.dll.mdb
 /Users/minsujeong/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 /Users/minsujeong/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
 /Users/minsujeong/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/minsujeong/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.pdb
+/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll
+/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll.mdb
+/Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.xml

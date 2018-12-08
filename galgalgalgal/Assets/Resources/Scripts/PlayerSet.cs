@@ -6,5 +6,7 @@ public class PlayerSet : MonoBehaviour
 {
     public Sprite[] spr;
     public GameObject[] map;
-    public UnityEditor.Animations.AnimatorController[] controller;
+    public Sprite[] changeEffectSpr;
+
+    public PLAYER currentPlayerState;
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Fire2 : MonoBehaviour {
 
-    public bool isBounce = false;
     //위치값을 이용한 상승
     public float fireSpeed = 10f;
     void Update()
@@ -30,7 +29,5 @@ public class Fire2 : MonoBehaviour {
             }
 
         }
-
-
     }
 }

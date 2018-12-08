@@ -14,7 +14,6 @@ public abstract class AttackAbility : MonoBehaviour {
     protected void Awake()
 	{
         rigidbody2D = GetComponent<Rigidbody2D>();
-        Debug.Log(rigidbody2D);
 	}
 	public void OnEnable()
 	{
