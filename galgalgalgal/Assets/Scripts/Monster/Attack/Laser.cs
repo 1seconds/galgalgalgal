@@ -34,8 +34,6 @@ public class Laser : MonoBehaviour {
         {
             timeScale += Time.deltaTime;
             spriteRenderer.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y+ 0.1f);
-
-
             yield return new WaitForSeconds(0.2f);
         }
         this.gameObject.SetActive(false);
