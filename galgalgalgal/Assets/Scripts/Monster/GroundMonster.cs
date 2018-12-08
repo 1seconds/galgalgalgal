@@ -21,8 +21,11 @@ public class GroundMonster : Monster
         mRigidbody2D = GetComponent<Rigidbody2D>();
         attackAbility = GetComponent<AttackAbility>();
     }
-
-    void FixedUpdate()
+	private void OnEnable()
+	{
+        transform.localScale = new Vector3(1, 1, 1);
+	}
+	void FixedUpdate()
     {
         if (!bTrace)
         {
@@ -38,7 +41,6 @@ public class GroundMonster : Monster
                       ||(viewDistance.y!=0 && Mathf.Abs(ray.distance) <= Mathf.Abs(viewDistance.y))))
                 {
                     bTrace = true;
-//                     Debug.Log("test");
                     attackAbility.IsAttack();
                 }
             }
@@ -68,6 +70,33 @@ public class GroundMonster : Monster
             bleft = true;
             spriteRenderer.flipX = false;
         }
+    }
+
+	public void OnGUI()
+	{
+        if(GUILayout.Button("click"))
+        {
+            Death();
+        }
+	}
+	/// <summary>
+	/// 몬스터 죽일 때 호출하면 줄어들면서 사라집니다.
+	/// </summary>
+	public void Death()
+    {
+        mRigidbody2D.bodyType = RigidbodyType2D.Static;
+        foreach(MonoBehaviour obj in GetComponents<MonoBehaviour>())
+            obj.enabled = false;
+        StartCoroutine("contractible");
+    }
+    public IEnumerator contractible()
+    {
+        while(transform.localScale.x>0.2f)
+        {
+            transform.localScale = new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        this.gameObject.SetActive(false);
     }
 
 
