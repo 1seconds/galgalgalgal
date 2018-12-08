@@ -68,6 +68,7 @@
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSet.cs" />
+    <Compile Include="Assets\Resources\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
     <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\DisapearTile.cs" />
@@ -86,6 +87,8 @@
     <Compile Include="Assets\Scripts\Monster\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Monster\Path.cs" />
     <Compile Include="Assets\Scripts\Monster\Run.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerBody.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerFoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\StretchTile.cs" />

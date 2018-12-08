@@ -13,7 +13,7 @@ public class GroundMonster : Monster
     private Rigidbody2D mRigidbody2D=null;
     private float mInterval=0.1f;
     private AttackAbility attackAbility;
-
+    private Vector3 localscale;
     protected void Awake()
     {
         base.Awake();
@@ -21,10 +21,11 @@ public class GroundMonster : Monster
         mRun = GetComponent<Run>();
         mRigidbody2D = GetComponent<Rigidbody2D>();
         attackAbility = GetComponent<AttackAbility>();
+        localscale = transform.localScale;
     }
 	private void OnEnable()
 	{
-        transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = localscale;
 	}
 	void FixedUpdate()
     {

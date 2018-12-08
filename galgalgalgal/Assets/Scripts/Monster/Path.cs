@@ -28,7 +28,7 @@ public class Path : MonoBehaviour {
             {
                 // transform.position = Vector2.MoveTowards(transform.position, nodePositions[index], speed * Time.deltaTime);
                 if(rigidbody2d.bodyType==RigidbodyType2D.Kinematic)
-                rigidbody2d.velocity+=Move.GetSpeed(transform.position, nodePositions[index], rigidbody2d.velocity, 0 ,speed);
+                rigidbody2d.velocity+=Move.GetSpeedx(transform.position, nodePositions[index], rigidbody2d.velocity, 0 ,speed);
                 if (Vector2.Distance(transform.position, nodePositions[index]) <= 0.1f)
                 {
                     index++;

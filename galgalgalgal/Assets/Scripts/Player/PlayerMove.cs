@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour {
     public float MamaximumSpeed = 2.0f;
     public float JumpPower = 30f;
     public float UpSpeed = 5f;
+    public float Verti = 0;
 
     public bool isKeydownUpDown = false;
     public bool isEnterSideTile = false;
@@ -14,9 +15,13 @@ public class PlayerMove : MonoBehaviour {
     public bool isJump = false;
     public bool isPlayerDie = false;
     
-
-    public void Update()
-    {
+    // Use this for initialization
+    void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
         if (isPlayerDie != true)
         {
             //좌우이동
@@ -30,21 +35,23 @@ public class PlayerMove : MonoBehaviour {
                     if (h < 0)
                         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
                     gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(MoveSpeed * h, 0, 0));
-                    //PlayerAnim_Run();
+
+                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Run();
                 }
                 else if (h == 0)
                 {
                     Invoke("HorizontalStop", 0.0f);
-                    //PlayerAnim_Idle();
+                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Idle();
                 }
             }
             if (Input.GetMouseButtonDown(0))
             {
-                //PlayerAnim_Attack();
+                Debug.Log("공격함!");
+                gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Attack();
             }
 
             //방향키 위아래
-            float Verti = Input.GetAxisRaw("Vertical");
+            Verti = Input.GetAxisRaw("Vertical");
             if (Verti != 0)
             {
                 isKeydownUpDown = true;
@@ -59,24 +66,24 @@ public class PlayerMove : MonoBehaviour {
             {
                 if (Verti != 0)
                 {
-                    //PlayerAnim_Ladder();
-                    transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
+                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Ladder();
+                    gameObject.transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
                 }
             }
 
 
             //최고속도 제한
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > MamaximumSpeed)
+            if (gameObject.transform.GetComponent<Rigidbody2D>().velocity.x > MamaximumSpeed)
             {
-                Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
+                Vector3 v = gameObject.transform.GetComponent<Rigidbody2D>().velocity;
                 v.x = MamaximumSpeed;
-                gameObject.GetComponent<Rigidbody2D>().velocity = v;
+                gameObject.transform.GetComponent<Rigidbody2D>().velocity = v;
             }
-            else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -MamaximumSpeed)
+            else if (gameObject.transform.GetComponent<Rigidbody2D>().velocity.x < -MamaximumSpeed)
             {
-                Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
+                Vector3 v = gameObject.transform.GetComponent<Rigidbody2D>().velocity;
                 v.x = -MamaximumSpeed;
-                gameObject.GetComponent<Rigidbody2D>().velocity = v;
+                gameObject.transform.GetComponent<Rigidbody2D>().velocity = v;
             }
 
 
@@ -95,54 +102,9 @@ public class PlayerMove : MonoBehaviour {
             }
         }
     }
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if(col.gameObject.tag=="Tile" || col.gameObject.tag=="Wall")
-        {
-            isJump = false;
-        }
-    }
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.tag=="Fire" || col.gameObject.tag == "Arrow")//불에 닿아 죽음
-        {
-            isPlayerDie = true;
-            //PlayerAnim_Die();
-        }
-        if(col.gameObject.tag=="Side")
-        {
-            isEnterSideTile = true;
-        }
 
-        if(col.gameObject.tag=="Ladder")
-        {
-            isEnterLadder = true;
-            if (isJump==true)//점프 중일 때
-            {
-                StartCoroutine(CheckJumpLadder());             
-            }
-            else
-            {
-                gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-            }
-        }
-        
-    }
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Side")
-        {
-            isEnterSideTile = false;
-        }
 
-        if (col.gameObject.tag == "Ladder")
-        {
-            isEnterLadder = false;
-            //PlayerAnim_Idle();
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-        }
-    }
-    
+
     public void HorizontalStop()
     {
         Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
@@ -156,39 +118,4 @@ public class PlayerMove : MonoBehaviour {
         gameObject.GetComponent<Rigidbody2D>().velocity = v;
     }
 
-    IEnumerator CheckJumpLadder()
-    {
-        do
-        {
-            if (isKeydownUpDown == true)
-            {
-                VerticalStop();
-                HorizontalStop();
-                gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-            }
-            yield return new WaitForSeconds(0.1f);
-        } while (isEnterLadder);
-    }
-
-
-    public void PlayerAnim_Idle()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("state", 0);
-    }
-    public void PlayerAnim_Run()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("state", 1);
-    }
-    public void PlayerAnim_Attack()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("state", 2);
-    }
-    public void PlayerAnim_Ladder()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("state", 3);
-    }
-    public void PlayerAnim_Die()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("state", 4);
-    }
 }
