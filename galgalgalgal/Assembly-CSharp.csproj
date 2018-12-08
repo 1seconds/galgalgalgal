@@ -66,6 +66,7 @@
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
     <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\FollowCam.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\AttackAbility.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\BodyAttack.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\Bullet.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\StretchTile.cs" />
     <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
+    <Compile Include="Assets\Scripts\Trap\FallingGround.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire1.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire3.cs" />

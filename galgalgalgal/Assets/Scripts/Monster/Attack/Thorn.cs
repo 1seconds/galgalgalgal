@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Thorn: MonoBehaviour {
 
+    public Animator animator;
     public GameObject gameObject;
     public float time;
 	public void OnEnable()
 	{
-		
 	}
     IEnumerator OnAction()
     {
