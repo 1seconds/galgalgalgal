@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class GroundMonster : Monster
 {
-    [Range(0,4)]
+    [Range(0,10)]
     public float speed;
     private Run mRun;
     private Rigidbody2D mRigidbody2D=null;
@@ -26,7 +26,6 @@ public class GroundMonster : Monster
     {
         if (!bTrace)
         {
-
 
             RaycastHit2D[] hits; 
             if(bleft) hits = Physics2D.RaycastAll(transform.position, new Vector2(-viewDistance.x,viewDistance.y));

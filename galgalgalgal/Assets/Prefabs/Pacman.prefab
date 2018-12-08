@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 61754406204490742}
   - component: {fileID: 114644144967839282}
   - component: {fileID: 114076051195739048}
+  - component: {fileID: 95701298560139962}
   m_Layer: 0
   m_Name: Pacman
   m_TagString: Untagged
@@ -83,7 +84,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 1.5}
+    oldSize: {x: 1.7, y: 1.3}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -92,6 +93,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!95 &95701298560139962
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111615962423084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7743d1ed878124e2f9662a611d23a5e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114076051195739048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayTime: 1.5
   bFire: 0
+  beforeTime: 1
+  afterTime: 0.5
+  rigidbody2D: {fileID: 0}
 --- !u!114 &114142752204572438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,8 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seachRange: 2.55
   bleft: 1
-  viewAngle: 18
-  viewDistance: 8.32
+  viewDistance: {x: 12, y: 0}
   bTrace: 0
   speed: 3.04
 --- !u!114 &114454406514762128
@@ -204,7 +225,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c73282df1733694419efc84569aeec15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f286fc6f6fb3542b99bacfcd617c3137, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

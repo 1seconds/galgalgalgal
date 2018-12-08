@@ -17,7 +17,8 @@ public class Bullet : MonoBehaviour {
 	}
 	public void OnEnable()
 	{
-        transform.position = groundMonster.transform.position;
+        transform.position = new Vector3(groundMonster.transform.position.x, groundMonster.transform.position.y-0.2f, groundMonster.transform.position.z);
+
         if (groundMonster.bleft) speed =Mathf.Abs(speed) * -1;
         else speed = Mathf.Abs(speed) ;
         StartCoroutine("OnMove");

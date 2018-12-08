@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "galgalgalgal", "galgalgalgal.csproj", "{284A60E9-9851-F2D7-5717-6403E13D24CC}"
+=======
+# Visual Studio for Mac
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{2BF9F71F-3FD0-465A-C282-CF036D8AC98D}"
+>>>>>>> master
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "galgalgalgal.Editor", "galgalgalgal.Editor.csproj", "{CF7FECE0-9E3C-959A-32BC-9924755F71B1}"
 EndProject
