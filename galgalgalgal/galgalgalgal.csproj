@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\StretchTile.cs" />
     <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
+    <Compile Include="Assets\Scripts\Trap\FallingGround.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire1.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire3.cs" />

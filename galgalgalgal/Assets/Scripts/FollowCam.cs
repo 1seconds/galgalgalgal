@@ -12,12 +12,6 @@ public class FollowCam : MonoBehaviour
     private float camHalfHeight;
 
     private Camera cam;
-
-    public BoxCollider2D box2d;
-
-
-
-
     // Use this for initialization
     void Start ()
     {
@@ -29,7 +23,6 @@ public class FollowCam : MonoBehaviour
         cameraPos = transform.position - target.position;
 
     }
-
     // Update is called once per frame
     void Update () {
 

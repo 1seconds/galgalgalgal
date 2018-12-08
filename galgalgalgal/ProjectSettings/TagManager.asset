@@ -4,17 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - Ladder
-  - Ground
-  - Fire
-  - Arrow
-  - Wall
-=======
-  - GameManager
   - Monster
   - Projectile
->>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -24,13 +15,8 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< HEAD
-  - Ladder
-  - CameraEception
-=======
   - 
   - 
->>>>>>> master
   - 
   - 
   - 
