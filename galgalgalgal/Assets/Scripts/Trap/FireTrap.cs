@@ -22,7 +22,7 @@ public class FireTrap : MonoBehaviour {
         float randomCycle;
         while (true)
         {
-            randomCycle = Random.Range(0.3f, 0.6f);
+            randomCycle = Random.Range(0.4f, 1f);
             fireBall = Instantiate(fire, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(randomCycle);
         }
@@ -31,30 +31,32 @@ public class FireTrap : MonoBehaviour {
     {
         float ShotCycle = 1f;
         float DestroyCycle = 0.5f;
+        float randRotate;
         while (true)
         {
-            
             //직선으로 파이어볼 생성
             SplitBall = Instantiate(fire, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(SplitTime);
 
-                //방향에 따른 파이어볼 생성
+            //방향에 따른 파이어볼 생성
             leftFire = Instantiate(fire);
 
             //발사각을 계산
+            randRotate = Random.Range(-30f, -1f);
             leftFire.transform.position = SplitBall.transform.position;
             leftFire.transform.eulerAngles = fire.transform.eulerAngles;
-            leftFire.transform.eulerAngles += new Vector3(0, 0, -30);
+            leftFire.transform.eulerAngles += new Vector3(0, 0, randRotate);
                 //방향에 따른 파이어볼 생성
             rightFire = Instantiate(fire);
 
             //발사각을 계산
+            randRotate = Random.Range(1f, 30f);
             rightFire.transform.position = SplitBall.transform.position;
             rightFire.transform.eulerAngles = fire.transform.eulerAngles;
-            rightFire.transform.eulerAngles += new Vector3(0, 0, 30);
+            rightFire.transform.eulerAngles += new Vector3(0, 0, randRotate);
 
             yield return new WaitForSeconds(DestroyCycle);
-            Destroy(fireBall);
+            Destroy(SplitBall);
             Destroy(leftFire);
             Destroy(rightFire);
 

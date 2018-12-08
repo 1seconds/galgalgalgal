@@ -287,6 +287,7 @@
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
     <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\FollowCam.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\AttackAbility.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\BodyAttack.cs" />
     <Compile Include="Assets\Scripts\Monster\Attack\Bullet.cs" />

@@ -104,7 +104,7 @@ public class PlayerMove : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag=="Fire")//불에 닿아 죽음
+        if(col.gameObject.tag=="Fire" || col.gameObject.tag == "Arrow")//불에 닿아 죽음
         {
             isPlayerDie = true;
             //PlayerAnim_Die();
