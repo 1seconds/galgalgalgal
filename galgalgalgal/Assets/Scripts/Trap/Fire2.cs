@@ -18,7 +18,7 @@ public class Fire2 : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D col)
     {
         //입사각
-        if(col.gameObject.tag == "Wall")
+        if(col.gameObject.tag == "Wall" || col.gameObject.tag.Contains("Ball"))
         {
             if (transform.rotation.z > 0)
             {

@@ -282,8 +282,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
+    <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\GameState.cs" />
+    <Compile Include="Assets\Resources\Scripts\Timer.cs" />
+    <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Monster\Move.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\StretchTile.cs" />
+    <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire1.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\FireTrap.cs" />

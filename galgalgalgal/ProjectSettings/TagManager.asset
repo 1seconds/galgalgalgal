@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
   - Wall
-=======
-  - GameManager
->>>>>>> master
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -45,10 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: BackGround
-    uniqueID: 3032796809
-    locked: 0
-  - name: Object
-    uniqueID: 3958787679
     locked: 0
