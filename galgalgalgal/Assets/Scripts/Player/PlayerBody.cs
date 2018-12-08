@@ -9,7 +9,11 @@ public class PlayerBody : MonoBehaviour {
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        
+        if(col.gameObject.CompareTag("Monster"))
+        {
+            gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
+            PlayerAnim_Die();
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -84,8 +88,8 @@ public class PlayerBody : MonoBehaviour {
     {
         gameObject.GetComponent<Animator>().SetInteger("state", 4);
     }
-    public void PlayerAnim_SwordWalk()
+    public void PlayerAnim_AtkEnd()
     {
-        gameObject.GetComponent<Animator>().SetInteger("state", 5);
+        gameObject.transform.parent.GetComponent<PlayerMove>().isAtkActivated = false;
     }
 }
