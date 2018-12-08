@@ -17,7 +17,6 @@ public class Timer : MonoBehaviour
 
     IEnumerator CountingStart()
     {
-
         yield return new WaitForSeconds(1f);
 
         currentTime += 1;
