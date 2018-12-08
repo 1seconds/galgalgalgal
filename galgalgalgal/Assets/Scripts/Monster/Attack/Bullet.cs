@@ -37,9 +37,15 @@ public class Bullet : MonoBehaviour {
 	}
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
-        if(collision.tag=="Player")
+        if (collision.tag != "Monstera" && collision.tag != "Ladder")
         {
+            Debug.Log(collision.tag.ToString());
             onBackup.Invoke(this.gameObject);
         }
+
+	}
+	public void OnCollisionEnter2D(Collision2D collision)
+	{
+       
 	}
 }

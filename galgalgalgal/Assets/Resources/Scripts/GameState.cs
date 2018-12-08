@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum PLAYER
 {
+    NONE,
     HARDCOREUSER,
     RICHUSER,
     NEWBYUSER,

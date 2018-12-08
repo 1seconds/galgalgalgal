@@ -23,6 +23,11 @@ public class CeilingArrow : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        myCor = StartCoroutine(Shoot());
+    }
+
     IEnumerator Shoot()
     {
         while(true)
