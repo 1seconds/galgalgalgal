@@ -7,38 +7,44 @@ public class FallingGround : MonoBehaviour {
     float _shakeTime = 2f;
     float _resetTime = 5f;
     float _fallingSpeed = 5f;
-    Vector3 _resetPos;
+    Vector2 _resetPos;
 	// Use this for initialization
 	void Start ()
     {
         _resetPos = transform.position;   	
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
         {
-            StartCoroutine(Falling());
+            StartCoroutine(Shake());
         }
     }
+    /*
     IEnumerator Falling()
     {
-        yield return new WaitForSeconds(_shakeTime);
-        transform.Translate(Vector2.down * _fallingSpeed * Time.deltaTime);
+        StopCoroutine(Shake());
+        while (transform.position.y < -10f)
+            Debug.Log("Sd");
+            transform.Translate(Vector2.down * _fallingSpeed);
         yield return new WaitForSeconds(_resetTime);
         transform.position = _resetPos;
-
-
-
     }
-    void Shake()
+    */
+    IEnumerator Shake()
     {
         Vector2 shakePos;
-
+        int shakeCount = 0;
+        float randPosX;
+        float randPosY;
+        while (shakeCount < 10)
+        {
+            randPosX = _resetPos.x + Random.Range(-0.1f, 0.1f);
+            randPosY = _resetPos.y + Random.Range(-0.1f, 0.1f);
+            shakePos = new Vector2(randPosX, randPosY);
+            transform.position = shakePos;
+            yield return new WaitForSeconds(0.1f);
+            shakeCount++;
+        }
     }
 }
