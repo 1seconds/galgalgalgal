@@ -25256,15 +25256,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 212954501541852256, guid: b7a641d6935d3e14989f4934f800c5a6,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812445439286148, guid: b7a641d6935d3e14989f4934f800c5a6, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7a641d6935d3e14989f4934f800c5a6, type: 2}
   m_IsPrefabAsset: 0
@@ -25273,38 +25264,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4043763676624876, guid: b7a641d6935d3e14989f4934f800c5a6,
     type: 2}
   m_PrefabInternal: {fileID: 616136074}
---- !u!1 &616136076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1812445439286148, guid: b7a641d6935d3e14989f4934f800c5a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 616136074}
---- !u!114 &616136077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 616136076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b5835258dc0fea4198ae957a6edea99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spr:
-  - {fileID: 21300000, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
-  - {fileID: 21300002, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
-  - {fileID: 21300004, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
-  - {fileID: 21300006, guid: 2fac31ba7db128b4781de85b1ca6a6df, type: 3}
-  map:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  changeEffectSpr:
-  - {fileID: 21300000, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
-  - {fileID: 21300002, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
-  - {fileID: 21300004, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
-  - {fileID: 21300006, guid: 2ee5fe46817fd954a98e2949536a1d25, type: 3}
-  currentPlayerState: 0
 --- !u!1 &616792230
 GameObject:
   m_ObjectHideFlags: 0
