@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour {
     public float Verti = 0;
 
     public bool isKeydownUpDown = false;
-    public bool isEnterSideTile = false;
     public bool isEnterLadder = false;
     public bool isJump = false;
     public bool isPlayerDie = false;
@@ -25,8 +24,7 @@ public class PlayerMove : MonoBehaviour {
         if (isPlayerDie != true)
         {
             //좌우이동
-            if (isEnterSideTile == false)
-            {
+
                 float h = Input.GetAxisRaw("Horizontal");
                 if (h != 0)
                 {
@@ -43,7 +41,7 @@ public class PlayerMove : MonoBehaviour {
                     Invoke("HorizontalStop", 0.0f);
                     gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Idle();
                 }
-            }
+            
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("공격함!");
@@ -102,9 +100,6 @@ public class PlayerMove : MonoBehaviour {
             }
         }
     }
-
-
-
     public void HorizontalStop()
     {
         Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;

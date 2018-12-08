@@ -13,19 +13,17 @@ public class PlayerBody : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        /*
+        if (col.CompareTag("DeadZone"))
+        {
+            gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
+            PlayerAnim_Die();
+        }
         if (col.gameObject.tag == "Fire")//불에 닿아 죽음
         {
-            isPlayerDie = true;
+            gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
             PlayerAnim_Die();
-        }*/
-
-        /*
-        if (col.gameObject.tag == "Side")
-        {
-            isEnterSideTile = true;
         }
-        */
+        
 
         if (col.gameObject.tag == "Ladder")
         {
@@ -44,11 +42,6 @@ public class PlayerBody : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Side")
-        {
-            gameObject.transform.parent.GetComponent<PlayerMove>().isEnterSideTile = false;
-        }
-
         if (col.gameObject.tag == "Ladder")
         {
             gameObject.transform.parent.GetComponent<PlayerMove>().isEnterLadder = false;
