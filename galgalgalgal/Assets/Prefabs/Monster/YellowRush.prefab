@@ -158,6 +158,7 @@ MonoBehaviour:
   bleft: 1
   viewDistance: {x: 6, y: 0}
   bTrace: 0
+  monsterType: 5
   speed: 2.1
 --- !u!114 &114856832485979240
 MonoBehaviour:

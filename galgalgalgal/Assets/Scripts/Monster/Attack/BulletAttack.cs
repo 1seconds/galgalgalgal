@@ -6,6 +6,7 @@ using UnityEngine;
 public class BulletAttack : AttackAbility
 {
     private ObjectPool mObjectPool;
+
     protected void Awake()
     {
         base.Awake();

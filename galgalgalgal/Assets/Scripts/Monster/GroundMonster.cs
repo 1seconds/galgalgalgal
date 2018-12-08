@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class GroundMonster : Monster
 {
+    public MOSTERS monsterType;
     [Range(0,10)]
     public float speed;
     private Run mRun;
