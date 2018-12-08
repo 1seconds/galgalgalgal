@@ -6,9 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GAMESTATE currentState;
     private UIManager uiManager;
-
     
-
     public void Start()
     {
         uiManager = gameObject.GetComponent<UIManager>();
@@ -65,10 +63,7 @@ public class GameManager : MonoBehaviour
             case PLAYER.HARDCOREUSER:
                 GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
-
-                for(int i =0; i<GameObject.FindGameObjectsWithTag("Monster").Length;i++)
-                {
-                }
+                
                 
                 break;
             case PLAYER.RICHUSER:
