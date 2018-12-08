@@ -19,14 +19,11 @@ public class Fire1 : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -10f)
+            Destroy(gameObject);
     }
     void Shot()
     {
         rigid.AddForce(Vector2.up * FirePower, ForceMode2D.Impulse);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-            Destroy(gameObject);
     }
 }

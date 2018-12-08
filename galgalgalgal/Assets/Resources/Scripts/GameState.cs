@@ -18,3 +18,13 @@ public enum GAMESTATE
     STOP,
     DONE
 }
+public enum MOSTERS
+{
+    WhiteSlime
+    , RedSlime
+    , ColorFullSckelton
+    , RedBim
+    , BlueBim
+    , YellowRunner
+    , PurpleRunner
+}

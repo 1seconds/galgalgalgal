@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Wilberforce;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,16 +43,19 @@ public class GameManager : MonoBehaviour
                 uiManager.user_rich.SetActive(false);
                 uiManager.user_newby.SetActive(false);
                 uiManager.user_hardCore.SetActive(true);
+                uiManager.gm.SetActive(false);
                 break;
             case PLAYER.NEWBYUSER:
                 uiManager.user_rich.SetActive(false);
                 uiManager.user_hardCore.SetActive(false);
                 uiManager.user_newby.SetActive(true);
+                uiManager.gm.SetActive(false);
                 break;
             case PLAYER.RICHUSER:
                 uiManager.user_newby.SetActive(false);
                 uiManager.user_hardCore.SetActive(false);
                 uiManager.user_rich.SetActive(true);
+                uiManager.gm.SetActive(false);
                 break;
             case PLAYER.GM:
                 uiManager.gm.SetActive(true);
@@ -69,20 +73,32 @@ public class GameManager : MonoBehaviour
         gameObject.GetComponent<UIManager>().ActiveCanvas(gameObject.GetComponent<UIManager>().doneCanvas);
     }
 
+    IEnumerator ScreenEffect()
+    {
+        GameObject.FindWithTag("MainCamera").GetComponent<Colorblind>().SetScreenEffect(false);
+        yield return new WaitForSeconds(0.05f);
+        GameObject.FindWithTag("MainCamera").GetComponent<Colorblind>().SetScreenEffect(true);
+        yield return new WaitForSeconds(0.05f);
+        GameObject.FindWithTag("MainCamera").GetComponent<Colorblind>().SetScreenEffect(false);
+        yield return new WaitForSeconds(0.05f);
+        GameObject.FindWithTag("MainCamera").GetComponent<Colorblind>().SetScreenEffect(true);
+    }
+
     public void ChangePlayer(PLAYER playerState)
     {
-        if(!GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.NONE))
+        if (!GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.NONE))
         {
             StartCoroutine(ChangeEffectCor());
+            StartCoroutine(ScreenEffect());
         }
-            
-
+        
         switch (playerState)
         {
             case PLAYER.HARDCOREUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.HARDCOREUSER;
                 GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
+                
                 break;
             case PLAYER.RICHUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.RICHUSER;
@@ -100,7 +116,7 @@ public class GameManager : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[3].SetActive(true);
                 break;
         }
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SelectSure(playerState);
+        SelectSure(playerState);
     }
 
     IEnumerator FadeOut()
@@ -125,7 +141,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeWaveCor()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         RandomChange();
     }
 
@@ -153,7 +169,7 @@ public class GameManager : MonoBehaviour
         tmpEffectObj = Instantiate(tmpEffectPrefab);
         tmpEffectObj.transform.position = GameObject.FindWithTag("Player").transform.position;
 
-        for (int i =1; i<GameObject.FindWithTag("Player").GetComponent<PlayerSet>().changeEffectSpr.Length;i++)
+        for (int i = 1; i < GameObject.FindWithTag("Player").GetComponent<PlayerSet>().changeEffectSpr.Length; i++)
         {
             tmpEffectObj.GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().changeEffectSpr[i];
             yield return new WaitForSeconds(0.1f);

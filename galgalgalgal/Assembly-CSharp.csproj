@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Colorblind Effect\Assets\Scripts\Colorblind.cs" />
     <Compile Include="Assets\Resources\Scripts\AnyKeyInput.cs" />
     <Compile Include="Assets\Resources\Scripts\Blink.cs" />
     <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
@@ -89,10 +90,13 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\StretchTile.cs" />
     <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
+    <Compile Include="Assets\Scripts\Trap\FallingGround.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire1.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire3.cs" />
     <Compile Include="Assets\Scripts\Trap\FireTrap.cs" />
+    <None Include="Assets\Colorblind Effect\Assets\Shaders\Colorblind.shader" />
+    <None Include="Assets\Colorblind Effect\Documentation\ReadMe.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/1seco/Desktop/giiitt/galgalgalgal/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
