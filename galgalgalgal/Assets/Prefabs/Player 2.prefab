@@ -262,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   MamaximumSpeed: 2
-  JumpPower: 30
+  JumpPower: 300
   UpSpeed: 5
   Verti: 0
   isKeydownUpDown: 0
