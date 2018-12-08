@@ -13,6 +13,7 @@ public class PlayerBody : MonoBehaviour {
         {
             gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
             PlayerAnim_Die();
+<<<<<<< HEAD
             StartCoroutine(DEADCor());
         }
     }
@@ -21,6 +22,9 @@ public class PlayerBody : MonoBehaviour {
     {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("InGame");
+=======
+        }
+>>>>>>> 5182362aa92a42a3717432d22b5e0e302df7f5a1
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -29,6 +33,7 @@ public class PlayerBody : MonoBehaviour {
         {
             gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
             PlayerAnim_Die();
+<<<<<<< HEAD
             StartCoroutine(DEADCor());
         }
         if (col.gameObject.CompareTag("Fire"))//불에 닿아 죽음
@@ -36,6 +41,13 @@ public class PlayerBody : MonoBehaviour {
             gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
             PlayerAnim_Die();
             StartCoroutine(DEADCor());
+=======
+        }
+        if (col.gameObject.tag == "Fire")//불에 닿아 죽음
+        {
+            gameObject.transform.parent.GetComponent<PlayerMove>().isPlayerDie = true;
+            PlayerAnim_Die();
+>>>>>>> 5182362aa92a42a3717432d22b5e0e302df7f5a1
         }
         
 
@@ -56,7 +68,11 @@ public class PlayerBody : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
+<<<<<<< HEAD
         if (col.gameObject.CompareTag("Ladder"))
+=======
+        if (col.gameObject.tag == "Ladder")
+>>>>>>> 5182362aa92a42a3717432d22b5e0e302df7f5a1
         {
             gameObject.transform.parent.GetComponent<PlayerMove>().isEnterLadder = false;
             PlayerAnim_Idle();
