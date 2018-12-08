@@ -56,10 +56,12 @@
      <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
      <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
      <Compile Include="Assets\Resources\Scripts\GameState.cs" />
+     <Compile Include="Assets\Resources\Scripts\PlayerSet.cs" />
      <Compile Include="Assets\Resources\Scripts\Timer.cs" />
      <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\DisapearTile.cs" />
      <Compile Include="Assets\Scripts\Monster\Move.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
      <Compile Include="Assets\Scripts\StretchTile.cs" />
      <Compile Include="Assets\Scripts\Trap\CeilingArrow.cs" />
