@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GAMESTATE currentState;
     private UIManager uiManager;
 
+    
+
     public void Start()
     {
         uiManager = gameObject.GetComponent<UIManager>();
@@ -54,5 +56,34 @@ public class GameManager : MonoBehaviour
     {
         currentState = GAMESTATE.DONE;
         gameObject.GetComponent<UIManager>().ActiveCanvas(gameObject.GetComponent<UIManager>().doneCanvas);
+    }
+
+    public void ChangePlayer(PLAYER playerState)
+    {
+        switch (playerState)
+        {
+            case PLAYER.HARDCOREUSER:
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
+                GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
+
+                for(int i =0; i<GameObject.FindGameObjectsWithTag("Monster").Length;i++)
+                {
+                }
+                
+                break;
+            case PLAYER.RICHUSER:
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
+                GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[1].SetActive(true);
+                break;
+            case PLAYER.NEWBYUSER:
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
+                GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[2].SetActive(true);
+                break;
+            case PLAYER.GM:
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
+                GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[3].SetActive(true);
+                break;
+        }
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SelectSure(playerState);
     }
 }

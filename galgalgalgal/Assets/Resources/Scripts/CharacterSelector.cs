@@ -10,10 +10,10 @@ public class CharacterSelector : MonoBehaviour
 
     public void Select()
     {
-        StartCoroutine(Twinkle());
+        StartCoroutine(Twinkle(playerState));
     }
 
-    IEnumerator Twinkle()
+    IEnumerator Twinkle(PLAYER playerState)
     {
         time_ = 0;
         while (true)
@@ -24,6 +24,7 @@ public class CharacterSelector : MonoBehaviour
             if (time_ > 3.0f)
                 break;
         }
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SelectSure(playerState);
+
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().ChangePlayer(playerState);
     }
 }
