@@ -11,12 +11,16 @@ public class FireTrap : MonoBehaviour {
     GameObject leftFire;
     GameObject rightFire;
     
-    public float SplitTime = 0.5f;
-    void Start ()
+    public float SplitTime = 1f;
+    private void OnEnable()
     {
         if (fire.name.Contains("FireBall2"))
+        {
             StartCoroutine(SplitFire());
+        }
+        
     }
+
     IEnumerator FireShot()
     {
         float randomCycle;
@@ -65,7 +69,7 @@ public class FireTrap : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.CompareTag("Player"))
+        if(col.gameObject.name.Contains("Player"))
         {
             if (fire.name.Contains("FireBall1"))
                 StartCoroutine(FireShot());
@@ -73,7 +77,7 @@ public class FireTrap : MonoBehaviour {
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.name.Contains("Player"))
         {
             StopAllCoroutines();
         }

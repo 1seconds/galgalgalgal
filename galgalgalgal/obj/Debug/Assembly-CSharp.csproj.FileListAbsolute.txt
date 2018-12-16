@@ -253,3 +253,5 @@ C:/Users/eltm3/Desktop/Dev/galgalgalgal/galgalgalgal/obj/Debug/Assembly-CSharp.c
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.dll.mdb
 /Users/minsujeong/galgalgalgal/galgalgalgal/Temp/bin/Debug/UnityEditor.UI.xml
+C:\Users\admin\Desktop\Gamer\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\Gamer\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

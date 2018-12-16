@@ -15,7 +15,7 @@ public class Path : MonoBehaviour {
 	{
         rigidbody2d = GetComponent<Rigidbody2D>();
 	}
-	public void Start()
+	public void OnEnable()
     {
         StartCoroutine("NodeMove");
     }
@@ -41,6 +41,10 @@ public class Path : MonoBehaviour {
             yield return new WaitForFixedUpdate();
         }
 
+    }
+    public void OnDisable()
+    {
+        StopCoroutine("NodeMove");
     }
    
 

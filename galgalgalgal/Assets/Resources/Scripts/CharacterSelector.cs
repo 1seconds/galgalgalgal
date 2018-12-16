@@ -7,14 +7,17 @@ public class CharacterSelector : MonoBehaviour
     public PLAYER playerState;
     private float time_;
     public float speed;
+    static public bool isTrigger = false;
 
     public void Select()
     {
-        StartCoroutine(Twinkle(playerState));
+        if(!isTrigger)
+         StartCoroutine(Twinkle(playerState));
     }
 
     IEnumerator Twinkle(PLAYER playerState)
     {
+        isTrigger = true;
         SoundManager.instance_.SFXPlay(SoundManager.instance_.clips[0]);
         time_ = 0;
         while (true)
@@ -26,6 +29,7 @@ public class CharacterSelector : MonoBehaviour
                 break;
         }
 
+        isTrigger = false;
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().ChangePlayer(playerState);
     }
 }

@@ -6,9 +6,14 @@ public class Fire2 : MonoBehaviour {
 
     //위치값을 이용한 상승
     public float fireSpeed = 10f;
+    private float time_ = 0;
     void Update()
     {
+        time_ += Time.deltaTime;
         Shot();
+
+        if (time_ > 10f)
+            Destroy(gameObject);
     }
     void Shot()
     {

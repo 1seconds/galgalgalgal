@@ -14,14 +14,13 @@ public class PlayerMove : MonoBehaviour
     public bool isKeydownUpDown = false;
     public bool isEnterLadder = false;
     public bool isJump = false;
-    public bool isPlayerDie = false;
+    static public bool isPlayerDie = false;
 
-    // Use this for initialization
-    void Start()
+
+    private void OnEnable()
     {
-
+        isPlayerDie = false;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +29,7 @@ public class PlayerMove : MonoBehaviour
             //좌우이동
             if (isAtkActivated != true)
             {
+
                 float h = Input.GetAxisRaw("Horizontal");
                 if (h != 0)
                 {
@@ -46,14 +46,20 @@ public class PlayerMove : MonoBehaviour
                     Invoke("HorizontalStop", 0.0f);
                     gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Idle();               
                 }
-                if (isJump == false && Verti == 0 && h == 0 && isAtkActivated==false)
+
+                if(gameObject.GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.RICHUSER))
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    if (isJump == false && Verti == 0 && h == 0 && isAtkActivated == false)
                     {
-                        gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Attack();
-                        isAtkActivated = true;
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Attack();
+                            isAtkActivated = true;
+                        }
                     }
                 }
+
+
                 //방향키 위아래
                 Verti = Input.GetAxisRaw("Vertical");
                 if (Verti != 0)
@@ -70,11 +76,11 @@ public class PlayerMove : MonoBehaviour
                 {
                     if (Verti != 0)
                     {
-                        gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Ladder();
                         gameObject.transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
                     }
+                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Ladder();
                 }
-
+                    
 
                 //최고속도 제한
                 if (gameObject.transform.GetComponent<Rigidbody2D>().velocity.x > MamaximumSpeed)
@@ -92,7 +98,7 @@ public class PlayerMove : MonoBehaviour
                 //점프
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if (gameObject.GetComponent<Rigidbody2D>().velocity.y == 0)
+                    if (Mathf.Abs( gameObject.GetComponent<Rigidbody2D>().velocity.y) < 0.1f)
                     {
                         if (isEnterLadder == false)
                         {

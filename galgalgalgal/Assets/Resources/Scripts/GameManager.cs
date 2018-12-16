@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AlphacaGo()
     {
-        yield return new WaitForSeconds(22);
+        yield return new WaitForSeconds(Random.Range(12,30));
         alphacaSet.SetActive(true);
         alphaca.transform.localPosition = alphacaInitVec;
         time_2 = 0;
@@ -140,6 +140,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangePlayer(PLAYER playerState)
     {
+        if (PlayerMove.isPlayerDie || GameDone.isClear)
+            return;
+
         if (!GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.NONE))
         {
             StartCoroutine(ChangeEffectCor());
@@ -156,20 +159,24 @@ public class GameManager : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.HARDCOREUSER;
                 GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
+                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[0].GetComponent<Animator>().runtimeAnimatorController;
                 break;
             case PLAYER.RICHUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.RICHUSER;
                 GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
+                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[1].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[1].SetActive(true);
                 break;
             case PLAYER.NEWBYUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.NEWBYUSER;
                 GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
+                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[2].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[2].SetActive(true);
                 break;
             case PLAYER.GM:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.GM;
                 GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
+                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[3].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[3].SetActive(true);
                 break;
         }
@@ -188,6 +195,7 @@ public class GameManager : MonoBehaviour
             if (time_ > 1f)
                 break;
         }
+        DontDestroy.instance_.Delay();
         panel.SetActive(false);
     }
 

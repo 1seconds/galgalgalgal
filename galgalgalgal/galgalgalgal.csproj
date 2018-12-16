@@ -311,7 +311,6 @@
     <Compile Include="Assets\Scripts\Trap\Fire2.cs" />
     <Compile Include="Assets\Scripts\Trap\Fire3.cs" />
     <Compile Include="Assets\Scripts\Trap\FireTrap.cs" />
-    <Compile Include="Assets\Scripts\Trap\FireTrap_Rich.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

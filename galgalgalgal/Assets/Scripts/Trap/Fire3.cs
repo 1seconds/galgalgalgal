@@ -5,10 +5,15 @@ using UnityEngine;
 public class Fire3 : MonoBehaviour {
 
     public float fireSpeed = 10f;
-	
+    private float time_ = 0;
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        time_ += Time.deltaTime;
         Shot();
+
+        if (time_ > 10f)
+            Destroy(gameObject);
 	}
     void Shot()
     {

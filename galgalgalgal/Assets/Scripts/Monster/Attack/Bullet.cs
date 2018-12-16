@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour {
 	public void OnEnable()
 	{
         transform.position = new Vector3(groundMonster.transform.position.x, groundMonster.transform.position.y-0.2f, groundMonster.transform.position.z);
-
+        Invoke("Test", 10f);
         if (groundMonster.bleft) speed =Mathf.Abs(speed) * -1;
         else speed = Mathf.Abs(speed) ;
         StartCoroutine("OnMove");
@@ -37,15 +37,21 @@ public class Bullet : MonoBehaviour {
 	}
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
-        if (collision.tag != "Monstera" && collision.tag != "Ladder")
+        if (collision.tag != "Monster" && collision.tag != "Ladder")
         {
-            Debug.Log(collision.tag.ToString());
-            onBackup.Invoke(this.gameObject);
+            // Debug.Log(collision.tag.ToString());
+
+           
         }
 
 	}
+    private void Test()
+    {
+        onBackup.Invoke(this.gameObject);
+
+    }
 	public void OnCollisionEnter2D(Collision2D collision)
 	{
-       
+          //  onBackup.Invoke(this.gameObject);
 	}
 }
