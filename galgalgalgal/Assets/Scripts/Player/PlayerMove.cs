@@ -39,12 +39,12 @@ public class PlayerMove : MonoBehaviour
                         gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
                     gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(MoveSpeed * h, 0, 0));
 
-                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Run();
+                    //gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Run();
                 }
                 else if (h == 0)
                 {
                     Invoke("HorizontalStop", 0.0f);
-                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Idle();               
+                    //gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Idle();               
                 }
 
                 if(gameObject.GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.RICHUSER))
@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
-                            gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Attack();
+                            //gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Attack();
                             isAtkActivated = true;
                         }
                     }
@@ -78,7 +78,7 @@ public class PlayerMove : MonoBehaviour
                     {
                         gameObject.transform.Translate(0, Verti * UpSpeed * Time.deltaTime, 0);
                     }
-                    gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Ladder();
+                    //gameObject.transform.GetChild(0).GetComponent<PlayerBody>().PlayerAnim_Ladder();
                 }
                     
 

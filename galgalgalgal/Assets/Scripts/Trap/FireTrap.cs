@@ -28,6 +28,7 @@ public class FireTrap : MonoBehaviour {
         {
             randomCycle = Random.Range(0.4f, 1f);
             fireBall = Instantiate(fire, transform.position, Quaternion.identity);
+            fireBall.transform.parent = gameObject.transform;
             yield return new WaitForSeconds(randomCycle);
         }
     }
@@ -40,11 +41,12 @@ public class FireTrap : MonoBehaviour {
         {
             //직선으로 파이어볼 생성
             SplitBall = Instantiate(fire, transform.position, Quaternion.identity);
+            SplitBall.transform.parent = gameObject.transform;
             yield return new WaitForSeconds(SplitTime);
 
             //방향에 따른 파이어볼 생성
             leftFire = Instantiate(fire);
-
+            leftFire.transform.parent = gameObject.transform;
             //발사각을 계산
             randRotate = Random.Range(-30f, -1f);
             leftFire.transform.position = SplitBall.transform.position;
@@ -52,7 +54,7 @@ public class FireTrap : MonoBehaviour {
             leftFire.transform.eulerAngles += new Vector3(0, 0, randRotate);
                 //방향에 따른 파이어볼 생성
             rightFire = Instantiate(fire);
-
+            rightFire.transform.parent = gameObject.transform;
             //발사각을 계산
             randRotate = Random.Range(1f, 30f);
             rightFire.transform.position = SplitBall.transform.position;

@@ -74,13 +74,13 @@ public class GroundMonster : Monster
         }
     }
 
-	public void OnGUI()
-	{
-        if(GUILayout.Button("click"))
-        {
-            Death();
-        }
-	}
+	//public void OnGUI()
+	//{
+ //       if(GUILayout.Button("click"))
+ //       {
+ //           Death();
+ //       }
+	//}
 	/// <summary>
 	/// 몬스터 죽일 때 호출하면 줄어들면서 사라집니다.
 	/// </summary>

@@ -23,6 +23,7 @@ public class ObjectPool : MonoBehaviour
             clones.GetComponent<Bullet>().onBackup.AddListener(PushObject);
             clones.GetComponent<Bullet>().groundMonster = groundMonster;
             PushObject(clones);
+            clones.transform.parent = gameObject.transform.parent;
         }
     }
     /// <summary>

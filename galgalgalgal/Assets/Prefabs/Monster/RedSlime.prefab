@@ -118,7 +118,7 @@ Animator:
   m_GameObject: {fileID: 1378644803249068}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7743d1ed878124e2f9662a611d23a5e4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 48c1a418204fc4f999ddc02164b45b83, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   bleft: 1
   viewDistance: {x: 12, y: 0}
   bTrace: 0
-  monsterType: 1
+  monsterType: 0
   speed: 3.04
 --- !u!114 &114944185678958292
 MonoBehaviour:

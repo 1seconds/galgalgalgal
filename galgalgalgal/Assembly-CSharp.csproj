@@ -63,16 +63,24 @@
   <ItemGroup>
     <Compile Include="Assets\Colorblind Effect\Assets\Scripts\Colorblind.cs" />
     <Compile Include="Assets\Resources\Scripts\AnyKeyInput.cs" />
+    <Compile Include="Assets\Resources\Scripts\AttackManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Blink.cs" />
     <Compile Include="Assets\Resources\Scripts\CharacterSelector.cs" />
+    <Compile Include="Assets\Resources\Scripts\CoinManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\CoinSpin.cs" />
+    <Compile Include="Assets\Resources\Scripts\ConvBelt.cs" />
     <Compile Include="Assets\Resources\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Resources\Scripts\Finish.cs" />
     <Compile Include="Assets\Resources\Scripts\GameDone.cs" />
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
+    <Compile Include="Assets\Resources\Scripts\KeyboardSelector.cs" />
     <Compile Include="Assets\Resources\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSet.cs" />
+    <Compile Include="Assets\Resources\Scripts\RandomItem.cs" />
+    <Compile Include="Assets\Resources\Scripts\RandomItemManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\ShopManager.cs" />
     <Compile Include="Assets\Resources\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Timer.cs" />
     <Compile Include="Assets\Resources\Scripts\UIManager.cs" />
@@ -93,8 +101,6 @@
     <Compile Include="Assets\Scripts\Monster\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Monster\Path.cs" />
     <Compile Include="Assets\Scripts\Monster\Run.cs" />
-    <Compile Include="Assets\Scripts\Player\AttakSpace.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerBody.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerFoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />

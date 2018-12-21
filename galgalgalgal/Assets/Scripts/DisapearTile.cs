@@ -8,9 +8,17 @@ public class DisapearTile : MonoBehaviour
     private bool isTrigger = false;
     public float dissapearTime; 
 
-    private void OnCollisionStay2D(Collision2D obj)
+    //private void OnCollisionStay2D(Collision2D obj)
+    //{
+    //    if(obj.gameObject.CompareTag("Player"))
+    //    {
+    //        isTrigger = true;
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D obj)
     {
-        if(obj.gameObject.CompareTag("Player"))
+        if (obj.gameObject.CompareTag("Player"))
         {
             isTrigger = true;
         }

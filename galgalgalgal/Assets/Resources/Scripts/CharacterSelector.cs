@@ -30,6 +30,7 @@ public class CharacterSelector : MonoBehaviour
         }
 
         isTrigger = false;
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().ChangePlayer(playerState);
     }
 }

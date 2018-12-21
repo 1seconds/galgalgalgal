@@ -81,7 +81,9 @@ public class GameManager : MonoBehaviour
     //게임시작
     public void SelectSure(PLAYER playerState)
     {
+
         ChangeWave();
+
         switch (playerState)
         {
             case PLAYER.HARDCOREUSER:
@@ -103,10 +105,12 @@ public class GameManager : MonoBehaviour
                 uiManager.gm.SetActive(false);
                 break;
             case PLAYER.GM:
+                uiManager.user_newby.SetActive(false);
+                uiManager.user_hardCore.SetActive(false);
+                uiManager.user_rich.SetActive(false);
                 uiManager.gm.SetActive(true);
                 break;
         }
-
         currentState = GAMESTATE.PLAYING;
         gameObject.GetComponent<UIManager>().ActiveCanvas(gameObject.GetComponent<UIManager>().playingCanvas);
     }
@@ -140,9 +144,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangePlayer(PLAYER playerState)
     {
-        if (PlayerMove.isPlayerDie || GameDone.isClear)
-            return;
-
         if (!GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState.Equals(PLAYER.NONE))
         {
             StartCoroutine(ChangeEffectCor());
@@ -157,26 +158,26 @@ public class GameManager : MonoBehaviour
         {
             case PLAYER.HARDCOREUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.HARDCOREUSER;
-                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[0];
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[0].SetActive(true);
-                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[0].GetComponent<Animator>().runtimeAnimatorController;
+                GameObject.FindWithTag("Player").GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[0].GetComponent<Animator>().runtimeAnimatorController;
                 break;
             case PLAYER.RICHUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.RICHUSER;
-                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
-                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[1].GetComponent<Animator>().runtimeAnimatorController;
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[1];
+                GameObject.FindWithTag("Player").GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[1].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[1].SetActive(true);
                 break;
             case PLAYER.NEWBYUSER:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.NEWBYUSER;
-                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
-                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[2].GetComponent<Animator>().runtimeAnimatorController;
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[2];
+                GameObject.FindWithTag("Player").GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[2].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[2].SetActive(true);
                 break;
             case PLAYER.GM:
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().currentPlayerState = PLAYER.GM;
-                GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
-                GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[3].GetComponent<Animator>().runtimeAnimatorController;
+                GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>().sprite = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().spr[3];
+                GameObject.FindWithTag("Player").GetComponent<Animator>().runtimeAnimatorController = GameObject.FindWithTag("Player").GetComponent<PlayerSet>().animator[3].GetComponent<Animator>().runtimeAnimatorController;
                 GameObject.FindWithTag("Player").GetComponent<PlayerSet>().map[3].SetActive(true);
                 break;
         }
@@ -207,7 +208,9 @@ public class GameManager : MonoBehaviour
     IEnumerator ChangeWaveCor()
     {
         yield return new WaitForSeconds(5);
-        RandomChange();
+
+        if (!GameObject.FindWithTag("Player").GetComponent<PlayerManager>().currentPlayerState.Equals(PLAYERSTATEMENT.DIE))
+            RandomChange();
     }
 
     private void RandomChange()
