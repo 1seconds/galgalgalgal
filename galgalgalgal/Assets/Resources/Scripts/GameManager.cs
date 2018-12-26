@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeOut());
         ReadyGame();
 
-        StartCoroutine(AlphacaGo());
+        //StartCoroutine(AlphacaGo());
     }
 
     //게임준비

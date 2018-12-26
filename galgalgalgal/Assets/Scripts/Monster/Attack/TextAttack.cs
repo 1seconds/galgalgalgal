@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class TextAttack : AttackAbility {
-    public GameObject speechBubble;
+public class TextAttack : AttackAbility
+{
+    public GameObject[] speechBubble;
     protected void Awake()
     {
         base.Awake();
@@ -11,14 +12,14 @@ public class TextAttack : AttackAbility {
     {
         //if(IsAttack())
         {
-            speechBubble.SetActive(true);
+            speechBubble[Random.Range(0,2)].SetActive(true);
             Invoke("RigidbodyIskenectied", afterTime);
             Invoke("SetAtctiveFasle", afterTime);
         }
     }
     private void SetAtctiveFasle()
     {
-        speechBubble.SetActive(false);
-
+        for (int i = 0; i < speechBubble.Length; i++)
+            speechBubble[i].SetActive(false);
     }
 }

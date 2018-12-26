@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
     static public bool isGrounded = false;
     private bool isRadderInside = false;
     private bool isRadderTop = false;
-    private GameObject radderTopObj;
 
     private GameManager gameManager;
 
@@ -57,17 +56,17 @@ public class PlayerManager : MonoBehaviour
                 if (isRadderInside && !isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else if(isRadderInside && isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else
                 {
                     currentPlayerState = PLAYERSTATEMENT.WALK;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
             }
             else
@@ -75,17 +74,17 @@ public class PlayerManager : MonoBehaviour
                 if (isRadderInside && !isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else if(isRadderInside && isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else
                 {
                     currentPlayerState = PLAYERSTATEMENT.WALK;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
             }
         }
@@ -96,17 +95,17 @@ public class PlayerManager : MonoBehaviour
                 if (isRadderInside && !isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else if(isRadderInside && isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else
                 {
                     currentPlayerState = PLAYERSTATEMENT.WALK;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
             }
             else
@@ -114,17 +113,17 @@ public class PlayerManager : MonoBehaviour
                 if (isRadderInside && !isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else if(isRadderInside && isRadderTop)
                 {
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else
                 {
                     currentPlayerState = PLAYERSTATEMENT.WALK;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
             }
         }
@@ -242,25 +241,9 @@ public class PlayerManager : MonoBehaviour
                     PlayerAnim_LadderMove();
                 else
                     PlayerAnim_Run();
-
                 gameObject.transform.Translate(0, v * moveSpeed * 0.5f * Time.deltaTime, 0);
-                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(moveSpeed * h, 0, 0));
+                gameObject.transform.Translate(h * moveSpeed * 0.2f * Time.deltaTime, 0, 0);
 
-                if (Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
-                {
-                    if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
-                    {
-                        playerVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-                        playerVelocity.x = -maxSpeed;
-                        gameObject.GetComponent<Rigidbody2D>().velocity = playerVelocity;
-                    }
-                    else
-                    {
-                        playerVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-                        playerVelocity.x = maxSpeed;
-                        gameObject.GetComponent<Rigidbody2D>().velocity = playerVelocity;
-                    }
-                }
                 break;
             case PLAYERSTATEMENT.LADDER_STOP:
                 PlayerAnim_LadderStop();
@@ -335,13 +318,13 @@ public class PlayerManager : MonoBehaviour
                     isJumpAble = false;
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                     isRadderInside = true;
-                    radderTopObj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = true;
+                    obj.GetComponent<RadderTopObject>().obj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = true;
                 }
                 else
                 {
                     isJumpAble = true;
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                    radderTopObj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = false;
+                    obj.GetComponent<RadderTopObject>().obj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = false;
 
                     playerVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
                     playerVelocity.y = 0;
@@ -359,28 +342,23 @@ public class PlayerManager : MonoBehaviour
         }
         if(obj.CompareTag("LadderTop"))
         {
-            if(v < 0)
+            isRadderTop = true;
+            if (v < 0)
             {
                 currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
                 isJumpAble = false;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                 isRadderInside = true;
-                radderTopObj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = true;
+                obj.GetComponent<RadderTopObject>().obj.GetComponent<BoxCollider2D>().isTrigger = true;
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.CompareTag("LadderTop"))
-        {
-            isRadderTop = true;
-            radderTopObj = obj.gameObject;
-        }
         if(obj.CompareTag("Ladder"))
         {
             playerVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-            playerVelocity.x = 0;
             playerVelocity.y = 0;
             gameObject.GetComponent<Rigidbody2D>().velocity = playerVelocity;
         }
@@ -398,7 +376,6 @@ public class PlayerManager : MonoBehaviour
         {
             isRadderTop = false;
             col.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = true;
-            radderTopObj = null;
         }
 
 

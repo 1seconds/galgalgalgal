@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyboardSelector : MonoBehaviour
 {
     public GameObject[] characterSet;
+    public GameObject[] characterBollon;
     private GameObject currentSelectorObj;
     public int currentIndex = 0;
     public GameObject pointerObj;
@@ -14,8 +15,18 @@ public class KeyboardSelector : MonoBehaviour
     private void Start()
     {
         currentSelectorObj = characterSet[0];
-        pointerObj.transform.position = characterSet[0].transform.position + new Vector3(0, 160, 0);
+        pointerObj.transform.position = characterSet[0].transform.position - new Vector3(0, 240, 0);
+        for (int i = 0; i < characterBollon.Length; i++)
+            characterBollon[i].SetActive(false);
+
+        StartCoroutine(StartCor());
         StartCoroutine(MovePointer());
+    }
+
+    IEnumerator StartCor()
+    {
+        yield return new WaitForSeconds(0.5f);
+        characterBollon[0].SetActive(true);
     }
 
     private void Update()
@@ -31,7 +42,10 @@ public class KeyboardSelector : MonoBehaviour
                 currentIndex += 1;
 
             currentSelectorObj = characterSet[currentIndex];
-            pointerObj.transform.position = currentSelectorObj.transform.position + new Vector3(0, 160, 0);
+            for (int i = 0; i < characterBollon.Length; i++)
+                characterBollon[i].SetActive(false);
+            characterBollon[currentIndex].SetActive(true);
+            pointerObj.transform.position = currentSelectorObj.transform.position - new Vector3(0, 240, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
@@ -42,7 +56,10 @@ public class KeyboardSelector : MonoBehaviour
                 currentIndex -= 1;
 
             currentSelectorObj = characterSet[currentIndex];
-            pointerObj.transform.position = currentSelectorObj.transform.position + new Vector3(0, 160, 0);
+            for (int i = 0; i < characterBollon.Length; i++)
+                characterBollon[i].SetActive(false);
+            characterBollon[currentIndex].SetActive(true);
+            pointerObj.transform.position = currentSelectorObj.transform.position - new Vector3(0, 240, 0);
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -57,18 +74,18 @@ public class KeyboardSelector : MonoBehaviour
         time_ = 0;
         while(true)
         {
-            time_ += Time.deltaTime * 2;
+            time_ += Time.deltaTime * 1.5f ;
             yield return new WaitForEndOfFrame();
-            pointerObj.transform.position = Vector3.Lerp(pointerObj.transform.position, pointerObj.transform.position - new Vector3(0,1,0), time_);
+            currentSelectorObj.transform.localScale = Vector3.Lerp(new Vector3(1,1,1), new Vector3(1.3f, 1.3f, 1.3f), time_);
             if (time_ > 1.0f)
                 break;
         }
         time_ = 0;
         while (true)
         {
-            time_ += Time.deltaTime * 2;
+            time_ += Time.deltaTime * 1.5f;
             yield return new WaitForEndOfFrame();
-            pointerObj.transform.position = Vector3.Lerp(pointerObj.transform.position, pointerObj.transform.position + new Vector3(0, 1, 0), time_);
+            currentSelectorObj.transform.localScale = Vector3.Lerp(new Vector3(1.3f,1.3f,1.3f),new Vector3(1f, 1f, 1f), time_);
             if (time_ > 1.0f)
                 break;
         }

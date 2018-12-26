@@ -43,32 +43,4 @@ public class UIManager : MonoBehaviour
 
         canvas.SetActive(true);
     }
-
-    public void InventoryItemDisplay(GameObject obj)
-    {
-        inventoryImg.GetComponent<Image>().sprite = obj.GetComponent<Image>().sprite;
-    }
-
-    public void InventoryActive()
-    {
-        if (isInventoryActive)
-            InventoryActiveOff();
-        else
-            InventoryActiveOn();
-    }
-
-    private void InventoryActiveOn()
-    {
-        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.STOP;
-        Time.timeScale = 0.0f;
-        isInventoryActive = true;
-        inventorySet.SetActive(true);
-    }
-    private void InventoryActiveOff()
-    {
-        gameObject.GetComponent<GameManager>().currentState = GAMESTATE.PLAYING;
-        Time.timeScale = 1.0f;
-        isInventoryActive = false;
-        inventorySet.SetActive(false);
-    }
 }
