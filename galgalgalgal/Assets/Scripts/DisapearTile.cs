@@ -6,7 +6,6 @@ public class DisapearTile : MonoBehaviour
 {
     private float time_ = 0;
     private bool isTrigger = false;
-    public float dissapearTime; 
 
     //private void OnCollisionStay2D(Collision2D obj)
     //{
@@ -29,12 +28,12 @@ public class DisapearTile : MonoBehaviour
         if (isTrigger)
         {
             time_ += Time.deltaTime;
-            if (time_ > dissapearTime)
+            if (time_ > 1)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                 gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
-                if (time_ > dissapearTime + 5)
+                if (time_ > 1 + 5)
                 {
                     gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
                     gameObject.GetComponent<BoxCollider2D>().isTrigger = false;

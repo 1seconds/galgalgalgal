@@ -35,6 +35,8 @@ public class PlayerManager : MonoBehaviour
     float h = 0;
     float v = 0;
 
+    static public bool isMooJuck = false;
+
     private void Start()
     {
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
@@ -287,7 +289,8 @@ public class PlayerManager : MonoBehaviour
         {
             GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.DONE;
             PlayerAnim_Die();
-            StartCoroutine(DEADCor());
+            if (!isMooJuck)
+                StartCoroutine(DEADCor());
         }
     }
 
@@ -305,7 +308,8 @@ public class PlayerManager : MonoBehaviour
         {
             GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentState = GAMESTATE.DONE;
             PlayerAnim_Die();
-            StartCoroutine(DEADCor());
+            if (!isMooJuck)
+                StartCoroutine(DEADCor());
         }
 
         if (obj.CompareTag("Ladder"))
@@ -314,6 +318,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (v < 0)
                 {
+                    Debug.Log("111");
                     currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
                     isJumpAble = false;
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -322,8 +327,10 @@ public class PlayerManager : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("222");
                     isJumpAble = true;
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                    Debug.Log(obj.GetComponent<RadderTopObject>().obj.transform.GetChild(0).name);
                     obj.GetComponent<RadderTopObject>().obj.transform.GetChild(0).GetComponent<BoxCollider2D>().isTrigger = false;
 
                     playerVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
@@ -334,6 +341,7 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("333");
                 currentPlayerState = PLAYERSTATEMENT.LADDER_STOP;
                 isJumpAble = false;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -345,6 +353,7 @@ public class PlayerManager : MonoBehaviour
             isRadderTop = true;
             if (v < 0)
             {
+                Debug.Log("444");
                 currentPlayerState = PLAYERSTATEMENT.LADDER_MOVE;
                 isJumpAble = false;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -399,6 +408,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void PlayerAnim_Die()
     {
+        currentPlayerState = PLAYERSTATEMENT.DIE;
         gameObject.GetComponent<Animator>().SetInteger("state", 4);
     }
     public void PlayerAnim_AtkEnd()

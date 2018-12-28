@@ -12,7 +12,7 @@ public class RandomItem : MonoBehaviour
             return;
         if (obj.CompareTag("Player"))
         {
-            GameObject.FindWithTag("GameManager").GetComponent<RandomItemManager>().UseItem(Random.Range(0, 4));
+            GameObject.FindWithTag("GameManager").GetComponent<RandomItemManager>().UseItem(Random.Range(0, 5));
             isTrigger = true;
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         }

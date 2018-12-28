@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public Vector3 alphacaCenterVec;
     public Vector3 alphacaFinishVec;
 
-    [HideInInspector] public Vector3 playerInitVec = new Vector3(-1.24f, -0.76f, 0);
+    static public float changeWaveTime = 5;
 
     IEnumerator AlphacaGo()
     {
@@ -76,12 +76,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         currentState = GAMESTATE.READY;
         uiManager.ActiveCanvas(uiManager.readyCanvas);
+
+        if (SavePoint.isSavedOn)
+            GameObject.FindWithTag("Player").transform.position = new Vector2(PlayerPrefs.GetFloat("SavedXPos"), PlayerPrefs.GetFloat("SavedYPos"));
     }
 
     //게임시작
     public void SelectSure(PLAYER playerState)
     {
-
         ChangeWave();
 
         switch (playerState)
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         }
         currentState = GAMESTATE.PLAYING;
         gameObject.GetComponent<UIManager>().ActiveCanvas(gameObject.GetComponent<UIManager>().playingCanvas);
+      
     }
 
     //게임끝
@@ -207,7 +210,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeWaveCor()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(changeWaveTime);
 
         if (!GameObject.FindWithTag("Player").GetComponent<PlayerManager>().currentPlayerState.Equals(PLAYERSTATEMENT.DIE))
             RandomChange();
